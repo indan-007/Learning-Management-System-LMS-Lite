@@ -91,6 +91,18 @@ After adding a new course JSON file, you must also add its path to the manifest 
 }
 ```
 
+## Future Improvements
+
+This project serves as a robust foundation. Future enhancements could include:
+*   **Course Detail Page**: A dedicated page for each course showing all its lessons, progress, and a "Start" or "Resume" button.
+*   **Advanced User Roles**: A more secure, server-based authentication system to properly distinguish between students and instructors.
+*   **More Quiz Types**: Adding other question formats like fill-in-the-blank or drag-and-drop.
+*   **Themes**: Allowing users to switch between light and dark modes.
+
+## Found This Project Useful?
+
+If you found this LMS Lite project helpful or interesting, please consider giving it a ⭐ on GitHub!
+
 ## Security Notes
 
 LMS Lite is designed for maximum portability and simplicity, which comes with certain security trade-offs due to its static nature.
