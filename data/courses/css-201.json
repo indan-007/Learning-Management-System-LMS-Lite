@@ -1,0 +1,43 @@
+{
+  "id": "css-201",
+  "title": "Advanced CSS Techniques",
+  "description": "Master modern CSS features like Flexbox, Grid, and Custom Properties to build complex layouts.",
+  "difficulty": "Intermediate",
+  "duration": "6 hours",
+  "tags": ["CSS", "Web Design", "Frontend"],
+  "lessons": [
+    {
+      "lessonId": "css201-l1",
+      "title": "CSS Flexbox Deep Dive",
+      "content": "## Flexbox\\n\\nFlexbox is a one-dimensional layout model that offers space distribution between items in an interface and powerful alignment capabilities.\\n\\n```css\\n.container {\\n  display: flex;\\n  justify-content: center;\\n  align-items: center;\\n}\\n```"
+    },
+    {
+      "lessonId": "css201-l2",
+      "title": "Mastering CSS Grid",
+      "content": "## CSS Grid\\n\\nCSS Grid Layout is a two-dimensional layout system for the web. It lets you lay content out in rows and columns.\\n\\n```css\\n.grid-container {\\n  display: grid;\\n  grid-template-columns: auto auto auto;\\n}\\n```"
+    },
+    {
+      "lessonId": "css201-l3",
+      "title": "CSS Custom Properties",
+      "content": "## Custom Properties (Variables)\\n\\nCSS custom properties are entities defined by CSS authors which contain specific values to be reused throughout a document.\\n\\n```css\\n:root {\\n  --main-bg-color: coral;\\n}\\n\\nbody {\\n  background-color: var(--main-bg-color);\\n}\\n```"
+    },
+    {
+      "lessonId": "css201-l4",
+      "title": "Responsive Design with Media Queries",
+      "content": "## Media Queries\\n\\nMedia queries are a key part of responsive web design. They allow you to apply CSS styles only when certain conditions (such as screen size) are met.\\n\\n```css\\n@media (max-width: 600px) {\\n  body {\\n    background-color: lightblue;\\n  }\\n}\\n```"
+    },
+    {
+      "lessonId": "css201-q1",
+      "title": "Quiz: Advanced CSS",
+      "type": "quiz",
+      "questions": [
+        {
+          "question": "Which property is used to create a flex container?",
+          "options": ["display: flexbox;", "display: flex;", "display: box;", "flex: true;"],
+          "correctAnswers": ["display: flex;"],
+          "type": "mcq"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Lite</title>
+    <meta name="description" content="A lightweight, static Learning Management System.">
+    <!-- TODO: Add SRI hashes for all external resources -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs-okaidia-theme@0.0.1/prism-okaidia.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="loading-spinner" class="hidden fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+    </div>
+
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-gray-800">LMS Lite</a>
+            <div>
+                <a href="#courses" class="text-gray-600 hover:text-gray-800 px-3 py-2">Courses</a>
+                <a href="#login" id="login-nav" class="text-gray-600 hover:text-gray-800 px-3 py-2">Login</a>
+                <a href="#register" id="register-nav" class="text-gray-600 hover:text-gray-800 px-3 py-2">Register</a>
+                <a href="#" id="logout-nav" class="hidden text-gray-600 hover:text-gray-800 px-3 py-2">Logout</a>
+                <a href="#instructor" id="instructor-nav" class="text-gray-600 hover:text-gray-800 px-3 py-2 border-l ml-3 pl-3">Instructor Mode</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-6 py-8">
+        <!-- App content will be injected here -->
+        <section id="login-section" class="hidden max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+            <form id="login-form">
+                <div class="mb-4">
+                    <label for="login-username" class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" id="login-username" name="username" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                </div>
+                <div class="mb-6">
+                    <label for="login-password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="login-password" name="password" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">Login</button>
+                <p class="text-center mt-4">
+                    Don't have an account? <a href="#register" id="show-register" class="text-blue-500 hover:underline">Register here</a>
+                </p>
+            </form>
+        </section>
+
+        <section id="register-section" class="hidden max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+            <form id="register-form">
+                <div class="mb-4">
+                    <label for="register-username" class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" id="register-username" name="username" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                </div>
+                <div class="mb-6">
+                    <label for="register-password" class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" id="register-password" name="password" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                </div>
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200">Register</button>
+                <p class="text-center mt-4">
+                    Already have an account? <a href="#login" id="show-login" class="text-blue-500 hover:underline">Login here</a>
+                </p>
+            </form>
+        </section>
+
+        <section id="course-catalog-section" class="w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold">Courses</h2>
+                <div class="flex items-center space-x-4">
+                    <input type="search" id="search-bar" placeholder="Search courses..." class="px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                    <select id="filter-difficulty" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                        <option value="">All Difficulties</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                    <input type="text" id="filter-tags" placeholder="Filter by tag..." class="px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200">
+                </div>
+            </div>
+            <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course cards will be injected here by catalog.js -->
+            </div>
+        </section>
+
+        <section id="lesson-player-section" class="hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <div id="lesson-header" class="mb-6 border-b pb-4">
+                <h2 id="lesson-title" class="text-3xl font-bold">Lesson Title</h2>
+                <p id="course-title-breadcrumb" class="text-sm text-gray-500 mt-1 hover:underline cursor-pointer">Course Title</p>
+            </div>
+            <div id="lesson-content" class="prose max-w-none">
+                <!-- Markdown content will be rendered here -->
+            </div>
+            <div id="lesson-navigation" class="flex justify-between items-center mt-8 pt-4 border-t">
+                <button id="prev-lesson-btn" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed">&laquo; Previous</button>
+                <button id="complete-lesson-btn" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">Mark as Complete</button>
+                <button id="next-lesson-btn" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed">Next &raquo;</button>
+            </div>
+        </section>
+
+        <section id="certificate-section" class="hidden max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Certificate of Completion</h2>
+            <p class="mb-8">Congratulations! You have successfully completed this course.</p>
+            <div id="certificate-viewer" class="bg-white p-8 rounded-lg shadow-md border-4 border-blue-200">
+                <!-- SVG certificate will be injected here -->
+            </div>
+            <div id="certificate-actions" class="mt-8 flex justify-center gap-4">
+                <button id="download-svg-btn" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">Download SVG</button>
+                <button id="download-png-btn" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">Download PNG</button>
+                <button id="download-pdf-btn" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600">Download PDF</button>
+            </div>
+        </section>
+
+        <section id="instructor-dashboard-section" class="hidden max-w-6xl mx-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold">Instructor Dashboard</h2>
+                <div class="flex gap-4">
+                    <a href="#/create-course" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">Create New Course</a>
+                    <label class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 cursor-pointer">
+                        <span>Import Course</span>
+                        <input type="file" id="import-course-input" class="hidden" accept=".json,application/json">
+                    </label>
+                </div>
+            </div>
+            <div id="instructor-course-list" class="space-y-4 bg-white p-6 rounded-lg shadow-md">
+                <!-- List of courses with Edit/Export buttons will be rendered here -->
+            </div>
+        </section>
+
+        <section id="course-editor-section" class="hidden max-w-6xl mx-auto">
+            <h2 id="editor-title" class="text-3xl font-bold mb-6">Course Editor</h2>
+            <form id="course-editor-form" class="bg-white p-8 rounded-lg shadow-md">
+                <!-- Course metadata fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 border-b pb-6">
+                    <div>
+                        <label for="course-title" class="block text-sm font-medium text-gray-700">Title</label>
+                        <input type="text" id="course-title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        <input type="hidden" id="course-id">
+                    </div>
+                    <div>
+                        <label for="course-difficulty" class="block text-sm font-medium text-gray-700">Difficulty</label>
+                        <select id="course-difficulty" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="course-description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="course-description" rows="3" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="course-duration" class="block text-sm font-medium text-gray-700">Duration (e.g., 4 hours)</label>
+                        <input type="text" id="course-duration" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="course-tags" class="block text-sm font-medium text-gray-700">Tags (comma-separated)</label>
+                        <input type="text" id="course-tags" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+
+                <!-- Lessons editor -->
+                <h3 class="text-2xl font-bold mb-4">Lessons</h3>
+                <div id="lessons-editor-container" class="space-y-6">
+                    <!-- Lesson forms will be dynamically added here -->
+                </div>
+                <button type="button" id="add-lesson-btn" class="mt-6 bg-gray-200 py-2 px-4 rounded-lg hover:bg-gray-300">Add Lesson</button>
+
+                <div class="mt-8 flex justify-end gap-4 border-t pt-6">
+                    <a href="#instructor" class="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600">Cancel</a>
+                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Save Course</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-white shadow-md mt-8">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-600">
+            <p>&copy; 2025 LMS Lite. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- App Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

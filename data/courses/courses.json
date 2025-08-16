@@ -1,0 +1,6 @@
+{
+  "courses": [
+    "data/courses/js-101.json",
+    "data/courses/css-201.json"
+  ]
+}

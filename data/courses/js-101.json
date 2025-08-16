@@ -1,0 +1,44 @@
+{
+  "id": "js-101",
+  "title": "Introduction to JavaScript",
+  "description": "Learn the fundamentals of JavaScript, the most popular programming language for the web.",
+  "difficulty": "Beginner",
+  "duration": "4 hours",
+  "tags": ["JavaScript", "Web Development", "Programming"],
+  "lessons": [
+    {
+      "lessonId": "js101-l1",
+      "title": "What is JavaScript?",
+      "content": "## Welcome to JavaScript!\\n\\nJavaScript is a programming language that makes websites interactive. It runs in your web browser.\\n\\n```javascript\\n// This is a comment in JavaScript\\nconsole.log('Hello, World!');\\n```"
+    },
+    {
+      "lessonId": "js101-l2",
+      "title": "Variables and Data Types",
+      "content": "## Variables\\n\\nVariables are containers for storing data values. In JavaScript, you can use `var`, `let`, or `const` to declare variables.\\n\\n### Data Types\\n*   **String**: `\\\"Hello\\\"`\\n*   **Number**: `123`\\n*   **Boolean**: `true` or `false`"
+    },
+    {
+      "lessonId": "js101-l3",
+      "title": "Functions and Scope",
+      "content": "## Functions\\n\\nA function is a block of code designed to perform a particular task.\\n\\n```javascript\\nfunction greet(name) {\\n  return 'Hello, ' + name;\\n}\\n```"
+    },
+    {
+      "lessonId": "js101-q1",
+      "title": "Quiz: JavaScript Basics",
+      "type": "quiz",
+      "questions": [
+        {
+          "question": "What keyword is used to declare a variable that cannot be reassigned?",
+          "options": ["var", "let", "const", "static"],
+          "correctAnswers": ["const"],
+          "type": "mcq"
+        },
+        {
+          "question": "Which of the following are primitive data types in JavaScript?",
+          "options": ["String", "Number", "Object", "Boolean"],
+          "correctAnswers": ["String", "Number", "Boolean"],
+          "type": "multi-select"
+        }
+      ]
+    }
+  ]
+}
