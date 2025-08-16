@@ -1,6 +1,14 @@
 import { initDB } from './db.js';
 import { showAlert } from './ui.js';
 
+// =================================================================
+// Dashboard and Core Logic
+// =================================================================
+
+/**
+ * Fetches all courses from the database, sorted by title.
+ * @returns {Promise<Array<object>>} A promise that resolves with an array of all course objects.
+ */
 async function getAllCourses() {
     const db = await initDB();
     return new Promise((resolve, reject) => {
@@ -90,8 +98,16 @@ export async function renderInstructorDashboard() {
     setupDashboardListeners();
 }
 
-// --- Course Editor Rendering ---
+// =================================================================
+// Course Editor Rendering
+// =================================================================
 
+/**
+ * Generates the HTML for the quiz editor part of a lesson form.
+ * @param {object} lesson - The lesson object, which may contain quiz questions.
+ * @param {number} lessonIndex - The index of the lesson in the course.
+ * @returns {string} The HTML string for the quiz editor.
+ */
 function getQuizEditorHTML(lesson = {}, lessonIndex) {
     const questions = lesson.questions || [{ question: '', options: ['', ''], correctAnswers: [''] }];
     return `
@@ -193,8 +209,14 @@ export async function renderCourseEditor(courseId) {
     setupEditorListeners();
 }
 
-// --- Event Listeners and Handlers ---
+// =================================================================
+// Event Listeners and Handlers
+// =================================================================
 
+/**
+ * Handles the "Reset All Data" button click.
+ * Clears all object stores in IndexedDB and reloads the page.
+ */
 async function handleResetData() {
     if (confirm('Are you sure you want to delete ALL application data, including users and courses? This cannot be undone.')) {
         try {

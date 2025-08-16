@@ -13,6 +13,18 @@ LMS Lite is a fully static, client-side Learning Management System built with va
 *   **Certificate Generation**: Dynamically generates an SVG certificate upon course completion, with options to download as SVG, PNG, or PDF.
 *   **Instructor Mode**: A complete client-side interface for creating, editing, importing, and exporting course content directly in the browser.
 
+## Tech Stack
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![IndexedDB](https://img.shields.io/badge/IndexedDB-blue?style=for-the-badge&logo=indexeddb&logoColor=white)
+
+## Live Demo & Screenshots
+
+> **Note:** Due to the limitations of the development environment, a live demo and screenshots for this project are not available. The application is designed to be run locally using a simple static file server.
+
 ## How to Use
 
 1.  Clone or download this repository.
